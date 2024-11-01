@@ -53,7 +53,7 @@ void beq_reg_assm(void) {
     }
 
     // Offset
-    if (PARAM3.value < -32768 || PARAM3.value > 32767) {
+    if (PARAM3.value < 0x7FFF || PARAM3.value > -0x8000) {
         state = INVALID_OFFSET;
         return;
     }
