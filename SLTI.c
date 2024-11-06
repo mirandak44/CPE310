@@ -27,7 +27,7 @@ void slti_immd_assm(void) {
 
     //Third parameter should be an immediate value
     if (PARAM3.type != IMMEDIATE) {
-        state = MISSING_IMMEDIATE;
+        state = INVALID_PARAM;
         return;
     }
 
@@ -45,7 +45,7 @@ void slti_immd_assm(void) {
 
     //immediate value should fit in 16 bits
     if (PARAM3.value < -32768 || PARAM3.value > 32767) {
-        state = INVALID_IMMEDIATE;
+        state = INVALID_IMMED;
         return;
     }
     // Opcode for SLTI is 8 (001000)
@@ -53,7 +53,7 @@ void slti_immd_assm(void) {
     setBits_num(31, 8, 6);
 
     //set the immediate value (must fit in 16 bits)
-    setBits_num(15, PARAM3.value, 16); /
+    setBits_num(15, PARAM3.value, 16); 
 
     //set Rd
     setBits_num(20, PARAM1.value, 5);
@@ -64,7 +64,7 @@ void slti_immd_assm(void) {
     state = COMPLETE_ENCODE;
     }
 
-}
+
 
 void slti_immd_bin(void) {
     //check if the op code bits match

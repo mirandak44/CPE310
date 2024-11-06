@@ -67,7 +67,7 @@ void slt_reg_assm(void) {
     // Indicate that the encoding is done
     state = COMPLETE_ENCODE;
   }
-}
+
 
 void slt_reg_bin(void) {
     // check if the op code bits match

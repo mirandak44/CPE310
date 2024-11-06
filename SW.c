@@ -26,7 +26,7 @@ void sw_immd_assm(void) {
 
     //third param should be an immediate value (offset)
     if (PARAM3.type != IMMEDIATE) {
-        state = MISSING_IMM;
+        state = INVALID_PARAM;
         return;
     }
 
@@ -44,7 +44,7 @@ void sw_immd_assm(void) {
 
     //check the immediate value (it should be a valid offset)
     if (PARAM3.value < -32768 || PARAM3.value > 32767) {
-        state = INVALID_IMM;
+        state = INVALID_IMMED;
         return;
     }
 
@@ -87,4 +87,4 @@ void sw_immd_bin(void) {
     
     state = COMPLETE_DECODE;
     }
-}
+
