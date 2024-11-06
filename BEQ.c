@@ -6,7 +6,7 @@ Code Modified by Emily Kissner: ADD.c ADDI.c BEQ.c BNE.c
 
 #include "Instruction.h"
 
-void beq_reg_assm(void) {
+void beq_immd_assm(void) {
     // Checking that the op code matches
     if (strcmp(OP_CODE, "BEQ") != 0) {
         // If the op code doesn't match, this isn't the correct command
@@ -32,7 +32,7 @@ void beq_reg_assm(void) {
 
     // Param 3 needs to be an immediate
     if (PARAM3.type != IMMEDIATE) {
-        state = MISSING_IMMEDIATE;
+        state = INVALID_PARAM;
         return;
     }
 
@@ -54,7 +54,7 @@ void beq_reg_assm(void) {
 
     // Offset
     if (PARAM3.value < 0x7FFF || PARAM3.value > -0x8000) {
-        state = INVALID_OFFSET;
+        state = INVALID_IMMED;
         return;
     }
 
@@ -78,7 +78,7 @@ void beq_reg_assm(void) {
     state = COMPLETE_ENCODE;
 }
 
-void beq_reg_bin(void) {
+void beq_immd_bin(void) {
 	// Check if the op code bits match
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	//  any x will be skipped

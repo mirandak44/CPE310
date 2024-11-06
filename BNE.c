@@ -71,7 +71,7 @@ void bne_immd_assm(void) {
 	state = COMPLETE_ENCODE;
 }
 
-void bne_bin(void) {
+void bne_immd_bin(void) {
 	// Check if the op code bits match
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	//  any x will be skipped
