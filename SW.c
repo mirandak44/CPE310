@@ -67,7 +67,7 @@ void sw_immd_assm(void) {
 void sw_immd_bin(void) {
     
     //check if the op code bits match for SW
-    if (checkBits(31, "100011") != 0) {
+    if (checkBits(31, "101011") != 0) {
         state = WRONG_COMMAND;
         return;
         }
